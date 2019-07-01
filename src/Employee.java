@@ -22,7 +22,17 @@ public class Employee
 
     }
 
-    public void createMeeting()
+    public static void createMeeting()
+    {
+
+    }
+
+    public static void cancelMeeting()
+    {
+
+    }
+
+    public static void displaySchedule()
     {
 
     }

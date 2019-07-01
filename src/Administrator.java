@@ -15,6 +15,11 @@ public class Administrator extends Employee
 
     }
 
+    public void resetPassword()
+    {
+
+    }
+
     public void createRoom()
     {
 
