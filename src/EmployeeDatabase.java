@@ -11,14 +11,18 @@ public class EmployeeDatabase{
 	public static MongoClientURI mongoClientURI;
 	public static MongoClient mongoClient;
 	public static MongoDatabase database;
-	public static MongoCollection collection;
+	public static MongoCollection employeeCollection;
+	public static MongoCollection scheduleCollection;
+	public static MongoCollection meetingCollection;
+	public static MongoCollection roomCollection;
 	
 	public EmployeeDatabase() {
 		String uri = "mongodb+srv://Admin:admin@meetingscheduler-rok4p.mongodb.net/test";
 		mongoClientURI = new MongoClientURI(uri);
 		mongoClient = new MongoClient(mongoClientURI);
 		database = mongoClient.getDatabase("EmployeeDatabase");	//if it doesn't exist, mongodb creates it
-		collection = database.getCollection("Employee");	//if it doesn't exist, mongodb creates it
+		employeeCollection = database.getCollection("Employee");	//if it doesn't exist, mongodb creates it
+		scheduleCollection = database.getCollection("Schedules");
 	}
 	
 	
@@ -27,14 +31,28 @@ public class EmployeeDatabase{
 		Document employee = new Document("username", entryInfo.getUsername());
         employee.append("password", entryInfo.getPassword());
         employee.append("schedule", entryInfo.getSchedule());
-        collection.insertOne(employee);
+        
+        employeeCollection.insertOne(employee);
         
 	}
 	
-	public void FindEntry(String username) {
+	public boolean FindEntry(String username) {
 		
+		//if()
+		
+		
+		
+		return false;
 	}
 	
+	
+	public void DeleteEntry(String username) {
+		if(FindEntry(username)) {
+			//delete
+		} else {
+			System.out.println("Employee not found in system!");
+		}
+	}
 	
 	//close the connection after accessing the database
 	public void Close() {
