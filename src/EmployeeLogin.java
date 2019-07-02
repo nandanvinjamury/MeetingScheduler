@@ -28,7 +28,9 @@ public class EmployeeLogin
                 E.displaySchedule();
                 break;
             case 5:
-                E.changePassword();
+            	System.out.println("Type in new password: ");
+            	String choice2 = scanner.nextLine();
+                E.changePassword(choice2);
                 break;
             case 6:
                 Login.loginCheck();
