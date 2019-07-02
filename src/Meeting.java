@@ -5,7 +5,7 @@ public class Meeting
     private Employee[] Employees ;
     private Room meetingRoom;
     private Employee Owner;
-    private float StartTime; //Note: numbers accepted are between 00.00 to 24.00
+    private float StartTime; //Note: numbers accepted are between 00.00 to 24.00 
     private float EndTime; //Note: same as above and must be larger then above
 
     //If the one who called this method is the owner then every position in the
@@ -18,18 +18,26 @@ public class Meeting
             {
                 declineMeeting(Employees[z]);
             }
+            
+            meetingRoom.setAvailability(true);
+            meetingRoom = null;
+        }
+        else
+        {
+            System.out.println("You are not the owner of the meeting, so it"
+                                + " has not been cancelled, no changes made.");
         }
     }
-
+    
     //Either handle the checking process for whether the Employee is availible
     //or not here or do it in the Employee class
     public void inviteEmployee(Employee invitedEmployee)
     {
-        Employees = Arrays.copyOf(Employees, Employees.length + 1);
-        Employees[Employees.length - 1] = invitedEmployee;
-
+       Employees = Arrays.copyOf(Employees, Employees.length + 1);
+       Employees[Employees.length - 1] = invitedEmployee;
+        
     }
-
+    
     //make sure to add code to get rid of the meeting on the Decliners schedule
     public void declineMeeting(Employee Decliner)
     {
@@ -41,7 +49,7 @@ public class Meeting
             }
         }
     }
-
+    
     //checks if the new room is availible then opens up the current room before
     //changing to the new room
     public void changeRoom(Room newRoom)
@@ -49,9 +57,9 @@ public class Meeting
         if(newRoom.getAvailability())
         {
             meetingRoom.setAvailability(true);
-
+            
             meetingRoom = newRoom;
-
+            
             meetingRoom.setAvailability(false);
         }
         else
@@ -59,12 +67,12 @@ public class Meeting
             System.out.println("That room is not availible, no changes made");
         }
     }
-
+    
     public void changeOwner(Employee newOwner)
     {
         Owner = newOwner;
     }
-
+    
     public void changeStartTime(float newStartTime)
     {
         if(newStartTime >= 0.0f && newStartTime <= 24.00)
@@ -74,13 +82,13 @@ public class Meeting
         else
         {
             System.out.println("The Time you entered is not between 00.00 and "
-                    +  "24.00, no changes were made.");
+                                +  "24.00, no changes were made.");
         }
     }
-
+    
     public void changeEndTime(float newEndTime)
     {
-        if(newEndTime >= 0.0f && newEndTime <= 24.00)
+     if(newEndTime >= 0.0f && newEndTime <= 24.00)
         {
             if(newEndTime > StartTime)
             {
@@ -89,21 +97,21 @@ public class Meeting
             else
             {
                 System.out.println("The end time entered is not after the start"
-                        + " time, no changed were made.");
+                                     + " time, no changed were made.");
             }
         }
         else
         {
             System.out.println("The Time you entered is not between 00.00 and "
-                    +  "24.00, no changes were made.");
-        }
+                                +  "24.00, no changes were made.");
+        }   
     }
-
+    
     public Employee[] getEmployeeList()
     {
         return Employees;
     }
-
+    
     public Room getRoom()
     {
         return meetingRoom;
