@@ -4,11 +4,12 @@ public class Login
 {
     public static String dbUsername = null;
     public static String dbPassword = null;
-    public static void main(String[] args)
+    /*public static void main(String[] args)
     {
 
         loginCheck();
     }
+    */
     public static void loginCheck()
     {
         Scanner scanner = new Scanner(System.in);
@@ -18,7 +19,7 @@ public class Login
         String password = scanner.nextLine();
         Employee E = null;
         Administrator A = null;
-        if(isAdministrator(username))
+        /*if(isAdministrator(username))
         {
             //Set dbUsername and dbPassword to ones in DB
             if (username.equals(dbUsername) && password.equals(dbPassword))
@@ -33,9 +34,9 @@ public class Login
                 System.out.println("Incorrect Password");
                 loginCheck();
             }
-        }
-        else if(isEmployee(username))
-        {
+        }*/
+        //else if(isEmployee(username))
+        //{
             //Set dbUsername and dbPassword to ones in DB
             if (username.equals(dbUsername) && password.equals(dbPassword))
             {
@@ -47,12 +48,12 @@ public class Login
                 System.out.println("Incorrect Password");
                 loginCheck();
             }
-        }
-        else
-        {
+        //}
+        //else
+        /*{
             System.out.println("Incorrect Username");
             loginCheck();
-        }
+        }*/
     }
     public static boolean isAdministrator(String user)
     {

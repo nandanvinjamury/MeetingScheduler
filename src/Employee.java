@@ -67,13 +67,13 @@ public class Employee
         this.schedule.addMeeting(meetingToAdd);
     }
 
-    public Meeting createMeeting()
+    public void createMeeting()
     {
-        System.out.println("Select a room");
+        System.out.println("Select an availible room");
         System.out.println("2");//Display available rooms from DB
         int roomNumber = scanner.nextInt();
         int dbRoomNumber = 2;
-        Room meetingRoom = null;
+        Room meetingRoom;
         float start = 0;
         float end = 23;
         if(roomNumber == dbRoomNumber)
@@ -83,14 +83,17 @@ public class Employee
             start = scanner.nextFloat();
             System.out.println("Choose End Time");
             end = scanner.nextFloat();
-        }
+        
         Meeting newMeeting = new Meeting();
         newMeeting.changeOwner(this);
         newMeeting.changeRoom(meetingRoom);
         newMeeting.changeStartTime(start);
         newMeeting.changeEndTime(end);
         
-        return newMeeting;
+        this.updateSchedule(newMeeting);
+        }
+        
+        System.out.println("Meeting Created!");
 
     }
 

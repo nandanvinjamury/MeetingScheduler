@@ -4,6 +4,9 @@ public class EmployeeLogin
 {
     public static void start(Employee E)
     {
+    	boolean getOut = false;
+    	while(getOut == false)
+    	{
         Scanner scanner = new Scanner(System.in);
         System.out.println("Select an option:");
         System.out.println("1. Create Meeting");
@@ -33,11 +36,12 @@ public class EmployeeLogin
                 E.changePassword(choice2);
                 break;
             case 6:
-                Login.loginCheck();
+                getOut = true;
                 break;
             default:
                 System.out.println("Not a valid option");
                 start(E);
+        }
         }
 
     }

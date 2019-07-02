@@ -6,6 +6,7 @@ public class Room
     public Room(int r)
     {
         roomNumber = r;
+        available = true;
     }
 
     public void setRoomNumber(int rn)

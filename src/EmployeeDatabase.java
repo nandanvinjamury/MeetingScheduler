@@ -78,6 +78,7 @@ public class EmployeeDatabase{
 	}
 	
 	
+	
 	public void DeleteEntry(String username) {
 		Document found = (Document) employeeCollection.find(new Document("username", username)).first();
 		if(found != null) {
@@ -137,6 +138,7 @@ public class EmployeeDatabase{
 		System.out.println(db.FindEntry("JaredDunn"));
 		System.out.println(db.FindEntry("JohnSmith"));
 		System.out.println(db.FindEntry("BobRoss"));
+		EmployeeLogin.start(man);
 		db.Close();
 		
 		

@@ -9,7 +9,7 @@ public class Schedule
     //the Schedules current meetings. 
     public boolean TimeSlotAvailible(Meeting newMeeting)
     {
-        for(int x = 0; x < meetings.length ; x++)
+        /*for(int x = 0; x < meetings.length ; x++)
         {
             if(newMeeting.getStartTime() >= meetings[x].getStartTime()
                 && newMeeting.getStartTime() <= meetings[x].getEndTime())
@@ -24,6 +24,7 @@ public class Schedule
             }
             
         }
+        */
         
         return true;
         

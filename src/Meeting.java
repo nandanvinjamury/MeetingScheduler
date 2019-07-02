@@ -110,7 +110,7 @@ public class Meeting
     {
         if(newRoom.getAvailability())
         {
-            meetingRoom.setAvailability(true);
+            
             
             meetingRoom = newRoom;
             
