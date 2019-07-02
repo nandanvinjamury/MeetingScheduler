@@ -97,7 +97,7 @@ public class Meeting
             else
             {
                 System.out.println("The end time entered is not after the start"
-                                     + " time, no changed were made.");
+                                     + " time, no changes were made.");
             }
         }
         else

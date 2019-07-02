@@ -2,7 +2,7 @@ import java.util.Arrays;
 
 public class Schedule
 {
-    private Meeting[] meetings;
+    private Meeting[] meetings = new Meeting[1];
 
     
     //checks if either the start time or end time of a meeting is during one of
