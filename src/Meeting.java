@@ -2,7 +2,8 @@ import java.util.Arrays;
 
 public class Meeting
 {
-    private Employee[] Employees ;
+	private long meetingID;
+    private Employee[] Employees;
     private Room meetingRoom;
     private Employee Owner;
     private float StartTime; //Note: numbers accepted are between 00.00 to 24.00 
@@ -25,6 +26,19 @@ public class Meeting
         StartTime = sT;
         EndTime = eT;
     }
+
+
+    
+    
+    public void Meeting() {
+    	meetingID = 0;
+    	Employees = new Employee[1];
+    	meetingRoom = new Room(0);
+    	Owner = Employees[0];
+    	StartTime = 1;
+    	EndTime = 23;
+    }
+    
 
     //If the one who called this method is the owner then every position in the
     //Employees array is made to be null using the decline meeting method
@@ -65,6 +79,15 @@ public class Meeting
         
     }
     
+    public void forceEmployee(Employee invitedEmployee)
+    {
+       Employees = Arrays.copyOf(Employees, Employees.length + 1);
+       Employees[Employees.length - 1] = invitedEmployee;
+       invitedEmployee.updateSchedule(this);
+      
+        
+    }
+    
     //make sure to add code to get rid of the meeting on the Decliners schedule
     public void declineMeeting(Employee Decliner)
     {
@@ -75,6 +98,10 @@ public class Meeting
                 Employees[y] = null;
             }
         }
+    }
+    
+    public void setID(long meetingID) {
+    	this.meetingID = meetingID;
     }
     
     //checks if the new room is availible then opens up the current room before
@@ -124,7 +151,7 @@ public class Meeting
             else
             {
                 System.out.println("The end time entered is not after the start"
-                                     + " time, no changed were made.");
+                                     + " time, no changes were made.");
             }
         }
         else
@@ -154,6 +181,9 @@ public class Meeting
     public float getEndTime()
     {
         return EndTime;
+    }
+    public long getID() {
+    	return meetingID;
     }
 
 }
