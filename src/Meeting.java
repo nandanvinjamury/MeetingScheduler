@@ -33,8 +33,17 @@ public class Meeting
     //or not here or do it in the Employee class
     public void inviteEmployee(Employee invitedEmployee)
     {
-       Employees = Arrays.copyOf(Employees, Employees.length + 1);
-       Employees[Employees.length - 1] = invitedEmployee;
+       if(invitedEmployee.getSchedule().TimeSlotAvailible(this))
+       {
+            Employees = Arrays.copyOf(Employees, Employees.length + 1);
+            Employees[Employees.length - 1] = invitedEmployee;
+            invitedEmployee.updateSchedule(this);
+       }
+       else
+       {
+           System.out.println("That employee cannot be invited.");
+       }
+      
         
     }
     
