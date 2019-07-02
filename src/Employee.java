@@ -4,12 +4,19 @@ public class Employee
     private String password;
     private Schedule schedule;
 
-    public void login(String u, String p)
+    public String getUsername()
     {
-        if(username == u && password == p)
-        {
+        return username;
+    }
 
-        }
+    public String getPassword()
+    {
+        return password;
+    }
+
+    public Schedule getSchedule()
+    {
+        return schedule;
     }
 
     public void changePassword()

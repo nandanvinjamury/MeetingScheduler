@@ -1,22 +1,124 @@
+import java.util.Arrays;
+
 public class Meeting
 {
-    private int[] Employees[];
+    private Employee[] Employees ;
     private Room meetingRoom;
     private Employee Owner;
+    private float StartTime; //Note: numbers accepted are between 00.00 to 24.00
+    private float EndTime; //Note: same as above and must be larger then above
 
-    public void changeRoom(Room r)
+    //If the one who called this method is the owner then every position in the
+    //Employees array is made to be null using the decline meeting method
+    public void cancelMeeting(Employee potentialOwner)
     {
+        if(potentialOwner.equals(Owner))
+        {
+            for(int z = 0; z < Employees.length; z++)
+            {
+                declineMeeting(Employees[z]);
+            }
+        }
+    }
+
+    //Either handle the checking process for whether the Employee is availible
+    //or not here or do it in the Employee class
+    public void inviteEmployee(Employee invitedEmployee)
+    {
+        Employees = Arrays.copyOf(Employees, Employees.length + 1);
+        Employees[Employees.length - 1] = invitedEmployee;
 
     }
 
-    public void changeTime(int t)
+    //make sure to add code to get rid of the meeting on the Decliners schedule
+    public void declineMeeting(Employee Decliner)
     {
-
+        for(int y = 0; y < Employees.length; y++)
+        {
+            if(Employees[y].getUsername().equals(Decliner.getUsername()))
+            {
+                Employees[y] = null;
+            }
+        }
     }
 
-    public void cancelMeeting()
+    //checks if the new room is availible then opens up the current room before
+    //changing to the new room
+    public void changeRoom(Room newRoom)
     {
+        if(newRoom.getAvailability())
+        {
+            meetingRoom.setAvailability(true);
 
+            meetingRoom = newRoom;
+
+            meetingRoom.setAvailability(false);
+        }
+        else
+        {
+            System.out.println("That room is not availible, no changes made");
+        }
+    }
+
+    public void changeOwner(Employee newOwner)
+    {
+        Owner = newOwner;
+    }
+
+    public void changeStartTime(float newStartTime)
+    {
+        if(newStartTime >= 0.0f && newStartTime <= 24.00)
+        {
+            StartTime = newStartTime;
+        }
+        else
+        {
+            System.out.println("The Time you entered is not between 00.00 and "
+                    +  "24.00, no changes were made.");
+        }
+    }
+
+    public void changeEndTime(float newEndTime)
+    {
+        if(newEndTime >= 0.0f && newEndTime <= 24.00)
+        {
+            if(newEndTime > StartTime)
+            {
+                EndTime = newEndTime;
+            }
+            else
+            {
+                System.out.println("The end time entered is not after the start"
+                        + " time, no changed were made.");
+            }
+        }
+        else
+        {
+            System.out.println("The Time you entered is not between 00.00 and "
+                    +  "24.00, no changes were made.");
+        }
+    }
+
+    public Employee[] getEmployeeList()
+    {
+        return Employees;
+    }
+
+    public Room getRoom()
+    {
+        return meetingRoom;
+    }
+    public Employee getOwner()
+    {
+        return Owner;
+    }
+    public float getStartTime()
+    {
+        return StartTime;
+    }
+    public float getEndTime()
+    {
+        return EndTime;
     }
 
 }
