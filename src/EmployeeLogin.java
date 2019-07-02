@@ -22,7 +22,7 @@ public class EmployeeLogin
                 E.cancelMeeting();
                 break;
             case 3:
-                E.updateSchedule();
+                E.changeSchedule();
                 break;
             case 4:
                 E.displaySchedule();

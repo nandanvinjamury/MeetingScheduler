@@ -3,6 +3,11 @@ public class Room
     private int roomNumber;
     private boolean available;
 
+    public Room(int r)
+    {
+        roomNumber = r;
+    }
+
     public void setRoomNumber(int rn)
     {
         roomNumber = rn;

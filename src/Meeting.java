@@ -8,6 +8,24 @@ public class Meeting
     private float StartTime; //Note: numbers accepted are between 00.00 to 24.00 
     private float EndTime; //Note: same as above and must be larger then above
 
+    public Meeting()
+    {
+        Employees = null;
+        meetingRoom = null;
+        Owner = null;
+        StartTime = 0;
+        EndTime = 0;
+    }
+
+    public Meeting(Employee[] e, Room r, Employee o, float sT, float eT)
+    {
+        Employees = e;
+        meetingRoom = r;
+        Owner = o;
+        StartTime = sT;
+        EndTime = eT;
+    }
+
     //If the one who called this method is the owner then every position in the
     //Employees array is made to be null using the decline meeting method
     public void cancelMeeting(Employee potentialOwner)

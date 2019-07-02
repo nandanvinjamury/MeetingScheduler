@@ -26,7 +26,7 @@ public class AdministratorLogin
                 A.cancelMeeting();
                 break;
             case 3:
-                A.updateSchedule();
+                A.changeSchedule();
                 break;
             case 4:
                 A.displaySchedule();
@@ -52,7 +52,9 @@ public class AdministratorLogin
                 do {
                     if(passChoice == 1)
                     {
-                        A.resetPassword();
+                        System.out.println("Enter new password");
+                        String newPassword = scanner.nextLine();
+                        A.resetPassword(A, newPassword);
                     }
                     else if(passChoice == 2)
                     {
@@ -60,7 +62,9 @@ public class AdministratorLogin
                             System.out.println("Enter Employee Username");
                             if(E == DBE)
                             {
-                                A.resetPassword(E);
+                                System.out.println("Enter new password");
+                                String newPassword = scanner.nextLine();
+                                A.resetPassword(E, newPassword);
                             }
                             else
                             {

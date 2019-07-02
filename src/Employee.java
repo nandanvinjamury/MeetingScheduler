@@ -1,18 +1,27 @@
+import java.util.Scanner;
+
 public class Employee
 {
-    private String username;
-    private String password;
-    private Schedule schedule;
-    private boolean Access = false;
+    String username;
+    String password;
+    Schedule schedule;
+    boolean Access = false;
+    Scanner scanner = new Scanner(System.in);
 
-    public void login(String u, String p)
+    public Employee(String u, String p, Schedule s)
     {
-        if(username.equals(u) && password.equals(p))
-        {
-            Access = true;
-        }
+        username = u;
+        password = p;
+        schedule = s;
     }
-    
+
+    public Employee()
+    {
+        username = null;
+        password = null;
+        schedule = null;
+    }
+
     public void logout()
     {
         Access = false;
@@ -58,9 +67,23 @@ public class Employee
         this.schedule.addMeeting(meetingToAdd);
     }
 
-    public Meeting createMeeting(Room meetingRoom,
-                                            float start, float end)
+    public Meeting createMeeting()
     {
+        System.out.println("Select a room");
+        System.out.println("2");//Display available rooms from DB
+        int roomNumber = scanner.nextInt();
+        int dbRoomNumber = 2;
+        Room meetingRoom = null;
+        float start = 0;
+        float end = 23;
+        if(roomNumber == dbRoomNumber)
+        {
+            meetingRoom = new Room(roomNumber);
+            System.out.println("Choose Start Time");
+            start = scanner.nextFloat();
+            System.out.println("Choose End Time");
+            end = scanner.nextFloat();
+        }
         Meeting newMeeting = new Meeting();
         newMeeting.changeOwner(this);
         newMeeting.changeRoom(meetingRoom);
@@ -71,9 +94,14 @@ public class Employee
 
     }
 
-    public  void cancelMeeting(Meeting meetingToCancel)
+    public  void cancelMeeting()
     {
+        //Display meetings from DB
+        System.out.println("Choose meeting to cancel");
+        int meeting = scanner.nextInt();
+        Meeting meetingToCancel = new Meeting();
         meetingToCancel.cancelMeeting(this);
+
     }
 
     public void displaySchedule()

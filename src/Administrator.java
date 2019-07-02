@@ -1,7 +1,21 @@
+import java.util.Scanner;
+
 public class Administrator extends Employee
 {
-    public Employee createUser(String name, String pass)
+    public Administrator(String u, String p, Schedule s)
     {
+        username = u;
+        password = p;
+        schedule = s;
+    }
+
+    public Employee createUser()
+    {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter username");
+        String name = scanner.nextLine();
+        System.out.println("Enter password");
+        String pass = scanner.nextLine();
         Employee newEmployee = new Employee();
         newEmployee.changeUsername(name);
         newEmployee.changePassword(pass);
@@ -21,10 +35,11 @@ public class Administrator extends Employee
         employee.changePassword(newPass);
     }
 
-    public Room createRoom(int roomNum)
+    public Room createRoom()
     {
-        Room newRoom = new Room();
-        newRoom.setRoomNumber(roomNum);
+        System.out.println("Choose room number");
+        int roomNum = scanner.nextInt();
+        Room newRoom = new Room(roomNum);
         newRoom.setAvailability(true);
 
         return  newRoom;
