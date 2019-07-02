@@ -97,7 +97,7 @@ public class EmployeeDatabase{
 		Employee man = new Employee();
 		Schedule schedule = new Schedule();
 		Meeting meeting = new Meeting();
-		Room room = new Room();
+		Room room = new Room(0);
 		
 		room.setRoomNumber(5);
 		room.setAvailability(true);
@@ -121,7 +121,7 @@ public class EmployeeDatabase{
 		Employee man2 = new Employee();
 		Schedule schedule2 = new Schedule();
 		Meeting meeting2 = new Meeting();
-		Room room2 = new Room();
+		Room room2 = new Room(0);
 		
 		room.setRoomNumber(6);
 		room.setAvailability(true);
