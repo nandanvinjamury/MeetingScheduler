@@ -30,7 +30,19 @@ public class EmployeeDatabase{
 		
 		Document employee = new Document("username", entryInfo.getUsername());
         employee.append("password", entryInfo.getPassword());
-        employee.append("schedule", entryInfo.getSchedule());
+        
+        long[] meetingIDs = new long[entryInfo.getSchedule().getMeetings().length];
+        
+        for(int i=0; i<meetingIDs.length;i++) {
+        	meetingIDs[i] = entryInfo.getSchedule().getMeetings()[i].getID();
+        }
+        
+        Document meetings = new Document("id", meetingIDs);
+        
+        
+        Document schedule = new Document("meetings", meetings);
+        employee.append("schedule", schedule);
+        
         
         employeeCollection.insertOne(employee);
         
@@ -63,18 +75,18 @@ public class EmployeeDatabase{
 	public static void main(String[] args) {
 		Employee man = new Employee();
 		Schedule schedule = new Schedule();
-		//Meeting meeting = new Meeting();
-		//Room room = new Room();
+		Meeting meeting = new Meeting();
+		Room room = new Room();
 		
-		//room.setRoomNumber(5);
-		//room.setAvailability(true);
+		room.setRoomNumber(5);
+		room.setAvailability(true);
 		
 		
 		
 		man.changeUsername("JohnSmith");
 		man.changePassword("password");
 		
-		//meeting.inviteEmployee(man);
+		//meeting.forceEmployee(man);
 		//meeting.changeRoom(room);
 		//meeting.changeStartTime(12);
 		//meeting.changeEndTime(14);
