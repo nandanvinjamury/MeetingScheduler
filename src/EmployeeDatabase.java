@@ -32,6 +32,7 @@ public class EmployeeDatabase{
 		
 		Document employee = new Document("username", entryInfo.getUsername());
         employee.append("password", entryInfo.getPassword());
+       
 
         /*long[] meetingIDs = new long[entryInfo.getSchedule().getMeetings().length > 0 ? entryInfo.getSchedule().getMeetings().length : 1];
         
@@ -136,9 +137,6 @@ public class EmployeeDatabase{
 		EmployeeDatabase db = new EmployeeDatabase();
 		db.AddEntry(man);
 		db.AddEntry(man2);
-		System.out.println(db.FindEntry("JaredDunn"));
-		System.out.println(db.FindEntry("JohnSmith"));
-		System.out.println(db.FindEntry("BobRoss"));
 		Login.loginCheck();
 		
 		db.Close();
