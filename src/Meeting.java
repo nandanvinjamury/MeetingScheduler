@@ -127,37 +127,52 @@ public class Meeting
         Owner = newOwner;
     }
     
-    public void changeStartTime(float newStartTime)
+    public boolean canChangeStartTime(float newTime)
     {
-        if(newStartTime >= 0.0f && newStartTime <= 24.00)
+        if(newTime >= 0.0f && newTime <= 24.00)
         {
-            StartTime = newStartTime;
+            return true;
         }
         else
         {
-            System.out.println("The Time you entered is not between 00.00 and "
-                                +  "24.00, no changes were made.");
+            return false;
         }
     }
     
+    public void changeStartTime(float newStartTime)
+    {
+    	if(canChangeStartTime(newStartTime))
+    	{
+    		StartTime = newStartTime;
+    	}
+    }
+    
     public void changeEndTime(float newEndTime)
+    {
+    	if(canChangeEndTime(newEndTime))
+    	{
+    		EndTime = newEndTime;
+    	}
+    }
+    
+    public boolean canChangeEndTime(float newEndTime)
     {
      if(newEndTime >= 0.0f && newEndTime <= 24.00)
         {
             if(newEndTime > StartTime)
             {
-                EndTime = newEndTime;
+                return true;
             }
             else
             {
-                System.out.println("The end time entered is not after the start"
-                                     + " time, no changes were made.");
+                System.out.println("The end time entered is not after the start");
+                return false;
             }
         }
         else
         {
-            System.out.println("The Time you entered is not between 00.00 and "
-                                +  "24.00, no changes were made.");
+            System.out.println("The Time you entered is not between 00.00 and 24.00");
+            return false;
         }   
     }
     

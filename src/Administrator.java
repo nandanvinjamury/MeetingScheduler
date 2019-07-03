@@ -4,9 +4,7 @@ public class Administrator extends Employee
 {
     public Administrator(String u, String p, Schedule s)
     {
-        username = u;
-        password = p;
-        schedule = s;
+        super(u,p,s);
     }
 
     public Employee createUser()

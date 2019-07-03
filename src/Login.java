@@ -19,7 +19,7 @@ public class Login
         String password = scanner.nextLine();
         Employee E = null;
         Administrator A = null;
-        /*if(isAdministrator(username))
+        if(isAdministrator(username))
         {
             //Set dbUsername and dbPassword to ones in DB
             if (username.equals(dbUsername) && password.equals(dbPassword))
@@ -27,16 +27,16 @@ public class Login
                 //Create Administrator object with info from DB
                 Schedule schedule = new Schedule();
                 Administrator administrator = new Administrator(username, password, schedule);
-                AdministratorLogin.Start(A);
+                AdministratorLogin.Start(administrator);
             }
             else
             {
                 System.out.println("Incorrect Password");
                 loginCheck();
             }
-        }*/
-        //else if(isEmployee(username))
-        //{
+        }
+        else if(isEmployee(username))
+        {
             //Set dbUsername and dbPassword to ones in DB
             if (username.equals(dbUsername) && password.equals(dbPassword))
             {
@@ -48,12 +48,12 @@ public class Login
                 System.out.println("Incorrect Password");
                 loginCheck();
             }
-        //}
-        //else
-        /*{
+        }
+        else
+        {
             System.out.println("Incorrect Username");
             loginCheck();
-        }*/
+        }
     }
     public static boolean isAdministrator(String user)
     {

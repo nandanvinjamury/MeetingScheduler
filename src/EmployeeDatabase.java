@@ -66,6 +66,7 @@ public class EmployeeDatabase{
 		return false;
 	}
 	
+	
 	public void UpdatePassword(String username, String password) {
 		
 		Document found = (Document) employeeCollection.find(new Document("username", username)).first();
@@ -138,7 +139,8 @@ public class EmployeeDatabase{
 		System.out.println(db.FindEntry("JaredDunn"));
 		System.out.println(db.FindEntry("JohnSmith"));
 		System.out.println(db.FindEntry("BobRoss"));
-		EmployeeLogin.start(man);
+		Login.loginCheck();
+		
 		db.Close();
 		
 		

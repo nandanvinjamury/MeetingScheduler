@@ -2,14 +2,20 @@ import java.util.Arrays;
 
 public class Schedule
 {
-    private Meeting[] meetings = new Meeting[1];
+    private Meeting[] meetings;
 
     
+    public Schedule()
+    {
+    	meetings = new Meeting[1];
+    }
     //checks if either the start time or end time of a meeting is during one of
     //the Schedules current meetings. 
     public boolean TimeSlotAvailible(Meeting newMeeting)
     {
-        /*for(int x = 0; x < meetings.length ; x++)
+    	if(meetings.length > 1)
+    	{
+        for(int x = 1; x < meetings.length ; x++)
         {
             if(newMeeting.getStartTime() >= meetings[x].getStartTime()
                 && newMeeting.getStartTime() <= meetings[x].getEndTime())
@@ -24,10 +30,14 @@ public class Schedule
             }
             
         }
-        */
+        
         
         return true;
-        
+    	}
+    	else
+    	{
+    	return true;
+    	}
     }
     
     public void addMeeting(Meeting newMeeting)
@@ -67,7 +77,7 @@ public class Schedule
         {
             if(meetings[z] != null)
             {
-                System.out.print( meetings[z].getOwner().getUsername() + "'s"
+                System.out.println( meetings[z].getOwner().getUsername() + "'s"
                         + " meeting from " + meetings[z].getStartTime()
                         + " to " + meetings[z].getEndTime());
             }

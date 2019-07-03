@@ -5,6 +5,9 @@ public class AdministratorLogin
     public static void Start(Administrator A)
     {
         Scanner scanner = new Scanner(System.in);
+        boolean getOut = false;
+        while(getOut == false)
+        {
         System.out.println("Select an option:");
         System.out.println("1. Create Meeting");
         System.out.println("2. Cancel Meeting");
@@ -79,12 +82,14 @@ public class AdministratorLogin
                 } while(passChoice != 1 && passChoice != 2);
                 break;
             case 10:
-                Login.loginCheck();
+                getOut = true;
                 break;
             default:
                 System.out.println("Not a valid option");
                 Start(A);
                 break;
         }
+        }
     }
+    
 }

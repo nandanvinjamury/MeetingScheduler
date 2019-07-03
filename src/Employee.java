@@ -85,15 +85,27 @@ public class Employee
             end = scanner.nextFloat();
         
         Meeting newMeeting = new Meeting();
+        
+       
+        
+        if(newMeeting.canChangeStartTime(start) && newMeeting.canChangeEndTime(end))
+        {
         newMeeting.changeOwner(this);
         newMeeting.changeRoom(meetingRoom);
         newMeeting.changeStartTime(start);
         newMeeting.changeEndTime(end);
-        
-        this.updateSchedule(newMeeting);
+        this.updateSchedule(newMeeting);        
         }
-        
-        System.out.println("Meeting Created!");
+        else
+        {
+        	System.out.println("Meeting not Created due to the Times entered not being between 0.00 and 24.00 or the end time "
+        			+ "being before the start time.");
+        }
+        }
+        else
+        {
+        	System.out.println("That room does not exist");
+        }
 
     }
 
